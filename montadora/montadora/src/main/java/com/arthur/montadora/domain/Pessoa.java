@@ -1,11 +1,25 @@
 package com.arthur.montadora.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Pessoa {
+import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.data.annotation.Id;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Table;
+
+@Entity
+public class Pessoa implements Serializable{
 		
+	@jakarta.persistence.Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
+	
+	@CPF
 	private String cpf;
 	private String telefone;
 	

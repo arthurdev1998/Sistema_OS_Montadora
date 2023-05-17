@@ -1,18 +1,45 @@
 package com.arthur.montadora.domain;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
+
 
 import com.arthur.montadora.domain.enums.Prioridades;
 import com.arthur.montadora.domain.enums.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class OrdemDeServico {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Table(name="ORDEM_SERVICO")
+@Entity
+public class OrdemDeServico implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy =GenerationType.IDENTITY )
 	private Integer id;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private LocalDateTime dataAbertura;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private LocalDateTime dataFechamento;
 	private Integer  prioridade;
 	private Integer status;
+	
+	@ManyToOne
+	@JoinColumn(name="TECNICO_ID")
 	private Tecnico tecnico;
+	
+	@ManyToOne
+	@JoinColumn(name="CLIENTE_ID")
 	private Cliente cliente;
 	
 	
@@ -108,10 +135,9 @@ public class OrdemDeServico {
 		this.setPrioridade(Prioridades.BAIXA); 
 	}
 
-	public OrdemDeServico(Integer id,  LocalDateTime dataFechamento, Prioridades prioridade,
+	public OrdemDeServico(Integer id,  Prioridades prioridade,
 			Status status, Tecnico tecnico, Cliente cliente) {
-		
-		
+			
 		this.id = id;
 		this.setDataAbertura(LocalDateTime.now());
 		this.dataFechamento = dataFechamento;

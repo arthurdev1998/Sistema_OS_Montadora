@@ -1,11 +1,10 @@
-package com.arthur.montadora;
+package com.arthur.montadora.config;
 
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import com.arthur.montadora.domain.Cliente;
 import com.arthur.montadora.domain.OrdemDeServico;
@@ -15,21 +14,17 @@ import com.arthur.montadora.domain.enums.Status;
 import com.arthur.montadora.repositories.ClienteRepository;
 import com.arthur.montadora.repositories.OrdemdeServicoRepository;
 import com.arthur.montadora.repositories.TecnicoRepository;
+import com.arthur.montadora.services.DbServices;
 
-@SpringBootApplication
-public class MontadoraApplication  {
-
+@Configuration
+@Profile("test")
+public class TestConfig {
 	
-
+private DbServices dbservice; 
 	
-	
-	public static void main(String[] args) {
-		SpringApplication.run(MontadoraApplication.class, args);
+	public void instanciaDB()throws Exception {
+		this.dbservice.instanciaDB();
+		
 	}
-
-
-
-	
 	
 }
-

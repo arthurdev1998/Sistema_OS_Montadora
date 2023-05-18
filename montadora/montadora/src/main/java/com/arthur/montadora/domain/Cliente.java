@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +19,7 @@ public class Cliente extends Pessoa implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
 	private List<OrdemDeServico> ordemservico = new ArrayList<>() ;
 	

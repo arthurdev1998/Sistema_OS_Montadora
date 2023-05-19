@@ -15,6 +15,8 @@ import com.arthur.montadora.domain.Tecnico;
 import com.arthur.montadora.domain.dtos.TecnicoDto;
 import com.arthur.montadora.services.TecnicoService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value="/api/montadora")
 public class TecnicoController {
@@ -36,7 +38,7 @@ public class TecnicoController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<TecnicoDto> CreateTecnico(@RequestBody Tecnico tecnico){
+	public ResponseEntity<TecnicoDto> CreateTecnico(@Valid @RequestBody Tecnico tecnico){
 		var obj = tecnicoservice.CreateTecnico(tecnico);
 		return ResponseEntity.ok().body(obj);
 	}

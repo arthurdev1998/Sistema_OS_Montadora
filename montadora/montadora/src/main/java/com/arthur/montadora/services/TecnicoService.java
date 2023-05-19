@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.arthur.montadora.domain.Tecnico;
 import com.arthur.montadora.domain.dtos.TecnicoDto;
-import com.arthur.montadora.exceptions.BadRequestException;
 import com.arthur.montadora.exceptions.ResourcesNotFoundException;
 import com.arthur.montadora.repositories.TecnicoRepository;
 
@@ -32,7 +31,7 @@ public class TecnicoService {
 	}
 	
 	public TecnicoDto CreateTecnico(Tecnico tecnico) {
-		if (FindCpf(tecnico)!= null) throw new BadRequestException("Cpf já cadastrado");
+		if (FindCpf(tecnico)!= null) throw new ResourcesNotFoundException("Cpf já cadastrado");
 		
 			
 		 

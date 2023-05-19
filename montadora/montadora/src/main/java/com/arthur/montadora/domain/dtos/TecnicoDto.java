@@ -6,24 +6,24 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import com.arthur.montadora.domain.Tecnico;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 public class TecnicoDto implements Serializable {
 
-		
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
 	private String nome;
-	
-	@CPF
 	private String cpf;
 	private String telefone;
+	
+	
+	
 	public Integer getId() {
 		return id;
 	}

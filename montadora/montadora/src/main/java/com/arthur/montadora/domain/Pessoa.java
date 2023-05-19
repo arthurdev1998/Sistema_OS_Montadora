@@ -10,6 +10,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Pessoa implements Serializable{
@@ -17,10 +20,15 @@ public class Pessoa implements Serializable{
 	@jakarta.persistence.Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@NotEmpty(message="O campo Nome não pode estar vazio?")
 	private String nome;
 	
 	@CPF
 	private String cpf;
+	
+	@NotEmpty(message="O campo Telefone não pode estar vazio?")
+	@Size(min=8, max =16, message="Número inválido")
 	private String telefone;
 	
 	public Pessoa() {

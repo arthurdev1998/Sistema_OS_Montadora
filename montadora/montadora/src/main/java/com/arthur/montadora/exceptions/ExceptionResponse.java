@@ -17,6 +17,10 @@ public class ExceptionResponse implements Serializable {
 		this.message = message;
 		this.details = details;
 	}
+	
+	public ExceptionResponse() {
+		
+	}
 
 	public Date getDateTime() {
 		return dateTime;

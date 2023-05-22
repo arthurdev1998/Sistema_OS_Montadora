@@ -42,6 +42,7 @@ ABERTO(0,"Aberto"), ANDAMENTO(1,"Andamento"), FECHADO(2,"Fechado");
 			if(cod.equals(x.getCod())) {
 				return x;
 			}
+			
 		}
 		
 		throw new IllegalArgumentException("código inválido");

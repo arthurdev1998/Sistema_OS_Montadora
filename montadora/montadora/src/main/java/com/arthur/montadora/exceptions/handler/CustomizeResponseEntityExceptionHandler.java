@@ -31,6 +31,8 @@ import com.arthur.montadora.exceptions.ResourcesNotFoundException;
 	}
 	
 	
+	// Exceções para argumentos inválidos:
+	
 	public final ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request){
 	String message = "";
 	for(ObjectError error: ex.getBindingResult().getAllErrors()) {

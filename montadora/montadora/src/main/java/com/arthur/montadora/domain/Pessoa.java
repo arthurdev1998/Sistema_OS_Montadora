@@ -21,14 +21,13 @@ public class Pessoa implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotEmpty(message="O campo Nome não pode estar vazio?")
+	@NotBlank(message="O campo Nome não pode estar vazio")
 	private String nome;
 	
 	@CPF
 	private String cpf;
 	
-	@NotEmpty(message="O campo Telefone não pode estar vazio?")
-	@Size(min=8, max =16, message="Número inválido")
+	@NotBlank(message="O campo Telefone não pode estar vazio")
 	private String telefone;
 	
 	public Pessoa() {
